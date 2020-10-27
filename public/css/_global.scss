@@ -1,0 +1,33 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(to right, #e66465, #9198e5);
+}
+
+header {
+  min-height: 10vh;
+  background: rgba(0, 0, 0, 0.3);
+  font-family: "Montserrat Subrayada", sans-serif;
+}
+
+footer {
+  min-height: 5vh;
+  background: rgba(0, 0, 0, 0.3);
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  font-size: 1.6rem;
+  padding: 2rem;
+  color: white;
+}
