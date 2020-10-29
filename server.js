@@ -18,6 +18,8 @@ app.set('view engine', 'ejs');
 
 /* middleware */
 app.use(morgan('tiny'));
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
 app.listen(port, () => {
     console.log(`listening on port ${port}...`);
@@ -25,5 +27,9 @@ app.listen(port, () => {
 
 app.get('/', (req, res) => {
     res.render('login_page');
+})
+
+app.post('/signUp', (req, res) => {
+    res.send(req.body);
 })
 

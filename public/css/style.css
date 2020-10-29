@@ -13,16 +13,127 @@ body {
   min-height: 100vh;
   background: -webkit-gradient(linear, left top, right top, from(#e66465), to(#9198e5));
   background: linear-gradient(to right, #e66465, #9198e5);
+  font-family: "Montserrat", sans-serif;
 }
 
 header {
   min-height: 10vh;
   background: rgba(0, 0, 0, 0.3);
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+header h1 {
   font-family: "Montserrat Subrayada", sans-serif;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding-left: 5rem;
+  font-size: 3rem;
+}
+
+header ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  list-style: none;
+  font-size: 2rem;
+}
+
+header ul li {
+  padding: 1rem;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+header ul li:hover:nth-child(1), header ul li:hover:nth-child(3), header ul li:hover:nth-child(5) {
+  padding: 0rem 3rem;
+}
+
+header ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+main {
+  min-height: 85vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+main form {
+  color: white;
+  font-size: 1.6rem;
+}
+
+main form h1 {
+  padding: 1.5rem 0rem;
+}
+
+main form input {
+  width: 100%;
+  margin: 1rem 0rem;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 2rem;
+  text-align: center;
+  outline: none;
+  border: none;
+}
+
+main form input:focus {
+  outline: 4px solid #9198e5;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  background-color: white;
+}
+
+main form button {
+  width: 50%;
+  margin: 2rem 25%;
+  outline: none;
+  border: none;
+  padding: 0.5rem 2rem;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid white;
+  color: white;
+  border-radius: 1rem 0rem 1rem 0rem;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+main form button:hover, main form button:focus {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  background-color: white;
+  color: #9198e5;
 }
 
 footer {
-  min-height: 5vh;
+  min-height: 3vh;
   background: rgba(0, 0, 0, 0.3);
   bottom: 0;
   left: 0;
@@ -30,7 +141,7 @@ footer {
   position: fixed;
   text-align: center;
   font-size: 1.6rem;
-  padding: 2rem;
+  padding: 1rem;
   color: white;
 }
 /*# sourceMappingURL=style.css.map */
