@@ -5,6 +5,9 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
+const databaseManager = require('./models/databaseManager');
+
+const apiUser = require('./routers/apiUser');
 
 /* app */
 const app = express();
@@ -21,15 +24,13 @@ app.use(morgan('tiny'));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
+app.use('/api/users', apiUser);
+
 app.listen(port, () => {
     console.log(`listening on port ${port}...`);
 })
 
 app.get('/', (req, res) => {
     res.render('login_page');
-})
-
-app.post('/signUp', (req, res) => {
-    res.send(req.body);
 })
 
