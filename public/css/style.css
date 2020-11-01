@@ -67,7 +67,13 @@ header ul li a {
   text-decoration: none;
 }
 
-main {
+h1.error {
+  background: rgba(255, 72, 72, 0.712);
+  padding: 1rem;
+  color: white;
+}
+
+main > #forms {
   min-height: 85vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -82,16 +88,16 @@ main {
           justify-content: space-evenly;
 }
 
-main form {
+main > #forms form {
   color: white;
   font-size: 1.6rem;
 }
 
-main form h1 {
+main > #forms form h1 {
   padding: 1.5rem 0rem;
 }
 
-main form input {
+main > #forms form input {
   width: 100%;
   margin: 1rem 0rem;
   -webkit-transition: all 0.3s ease;
@@ -103,14 +109,14 @@ main form input {
   border: none;
 }
 
-main form input:focus {
+main > #forms form input:focus {
   outline: 4px solid #9198e5;
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
   background-color: white;
 }
 
-main form button {
+main > #forms form button {
   width: 50%;
   margin: 2rem 25%;
   outline: none;
@@ -125,7 +131,7 @@ main form button {
   transition: all 0.3s ease;
 }
 
-main form button:hover, main form button:focus {
+main > #forms form button:hover, main > #forms form button:focus {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
   background-color: white;

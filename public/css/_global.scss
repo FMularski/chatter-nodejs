@@ -14,6 +14,8 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+$error-color: rgba(255, 72, 72, 0.712);
+
 header {
   min-height: 10vh;
   background: rgba(0, 0, 0, 0.3);
@@ -54,7 +56,13 @@ header {
   }
 }
 
-main {
+h1.error {
+  background: $error-color;
+  padding: 1rem;
+  color: white;
+}
+
+main > #forms {
   min-height: 85vh;
   display: flex;
   flex-wrap: wrap;

@@ -33,5 +33,13 @@ $(document).ready(() => {
                 confirm.val('');
             }
         })
-    })
+    });
+
+    // $('#sign-in-form').on('submit', function(event) {
+    //     event.preventDefault();
+    //     const login = $('#sign-in-login');
+    //     const password = $('#sign-in-password');
+
+    //     console.log(login.val(), password.val());
+    // })
 });
