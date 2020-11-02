@@ -12,9 +12,47 @@ body {
   min-height: 100vh;
   background: linear-gradient(to right, #e66465, #9198e5);
   font-family: "Montserrat", sans-serif;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
-$error-color: rgba(255, 72, 72, 0.712);
+$error-color: rgba(255, 106, 106, 0.712);
+$error-color2: rgba(252, 16, 16, 0.712);
+
+$success-color: rgba(29, 255, 29, 0.8);
+$success-color2: rgba(5, 184, 5, 0.8);
+
+.flying-msg {
+  position: absolute;
+  height: 12vh;
+  cursor: pointer;
+  pointer-events: all;
+  transition: all 1s ease;
+
+  &.msg-top {
+    top: 20vh;
+    animation: flying-msg 3s ease-in-out alternate infinite;
+  }
+
+  &.msg-mid {
+    top: 50vh;
+    animation: flying-msg 5s alternate-reverse infinite;
+  }
+
+  &.msg-bot {
+    top: 80vh;
+    animation: flying-msg 4s ease-out alternate infinite;
+  }
+}
+
+@keyframes flying-msg {
+  from {
+    transform: translateX(-20rem);
+  }
+  to {
+    transform: translateX(105vw);
+  }
+}
 
 header {
   min-height: 10vh;
@@ -23,43 +61,54 @@ header {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 
   h1 {
     font-family: "Montserrat Subrayada", sans-serif;
-    flex-grow: 1;
     padding-left: 5rem;
     font-size: 3rem;
   }
 
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    font-size: 2rem;
+  img {
+    height: 5vh;
+    padding: 0rem 2rem;
+    transition: all 0.8s ease;
 
-    li {
-      padding: 1rem;
-      transition: all 0.3s ease;
-
-      &:hover:nth-child(1),
-      &:hover:nth-child(3),
-      &:hover:nth-child(5) {
-        padding: 0rem 3rem;
-      }
-
-      a {
-        color: white;
-        text-decoration: none;
-      }
+    &:hover {
+      transform: rotateY(180deg);
     }
   }
 }
 
-h1.error {
-  background: $error-color;
+h1.flash {
   padding: 1rem;
   color: white;
+
+  &.error {
+    animation: error-pulse 1s alternate-reverse infinite;
+  }
+
+  &.success {
+    animation: success-pulse 1s alternate-reverse infinite;
+  }
+}
+
+@keyframes error-pulse {
+  from {
+    background: $error-color;
+  }
+  to {
+    background-color: $error-color2;
+  }
+}
+
+@keyframes success-pulse {
+  from {
+    background: $success-color;
+  }
+  to {
+    background-color: $success-color2;
+  }
 }
 
 main > #forms {
@@ -71,7 +120,8 @@ main > #forms {
 
   form {
     color: white;
-    font-size: 1.6rem;
+    font-size: 2.1rem;
+    width: 40rem;
 
     h1 {
       padding: 1.5rem 0rem;
@@ -106,6 +156,7 @@ main > #forms {
       border-radius: 1rem 0rem 1rem 0rem;
       cursor: pointer;
       transition: all 0.3s ease;
+      font-size: 1.6rem;
 
       &:hover,
       &:focus {
@@ -128,4 +179,16 @@ footer {
   font-size: 1.6rem;
   padding: 1rem;
   color: white;
+}
+
+@media screen and (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 42.5%;
+  }
 }

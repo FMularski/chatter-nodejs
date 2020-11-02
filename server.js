@@ -6,8 +6,9 @@ const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
 const databaseManager = require('./models/databaseManager');
-const { User } = require('./models/user');
+const { User, validateUser } = require('./models/user');
 const session = require('express-session');
+const flash = require('express-flash-messages');
 
 const apiUser = require('./routers/apiUser');
 
@@ -30,6 +31,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+app.use(flash());
 
 app.use('/api/users', apiUser);
 
@@ -38,7 +40,40 @@ app.listen(port, () => {
 })
 
 app.get('/', (req, res) => {
-    res.render('login_page', {error: req.query.error});
+    req.session.userId = undefined;
+    res.render('login_page');
+})
+
+app.post('/register', async (req, res) => {
+
+    // check for duplicates
+    const duplicateLogin = await User.findOne({login: req.body.login});
+    if (duplicateLogin) {
+        req.flash('error', `Login '${req.body.login}' is already in use.`);
+        return res.redirect('/');
+    }
+    
+    const duplicateEmail = await User.findOne({email: req.body.email});
+    if (duplicateEmail) {
+        req.flash('error', `Email '${req.body.email}' is already in use.`);
+        return res.redirect('/');
+    }
+
+    const validationResult = validateUser(req.body);
+    if (validationResult.error) {
+        req.flash('error', validationResult.error.message);
+        return res.redirect('/');
+    }
+
+    const newUser = new User ({
+        login: req.body.login,
+        email: req.body.email,
+        password: req.body.password
+    });
+
+    newUser.save();
+    req.flash('success', `User '${req.body.login}' has been successfully created.`);
+    return res.redirect('/');
 })
 
 app.post('/login', async (req, res) => {
@@ -48,13 +83,13 @@ app.post('/login', async (req, res) => {
     const userInDb = await User.findOne({login: login});
 
     if(!userInDb) {
-        const queryStringError = encodeURIComponent(`User '${login}' does not exist.`);
-        return res.redirect('/?error=' + queryStringError);
+        req.flash('error', `User '${login}' does not exist.`);
+        return res.redirect('/');
     }
     
     if ( password !== userInDb.password) {
-        const queryStringError  = encodeURIComponent('Invalid password.');
-        return res.redirect('/?error=' + queryStringError);
+        req.flash('error', 'Invalid password.');
+        return res.redirect('/');
     }
 
     req.session.userId = userInDb._id;
@@ -65,5 +100,10 @@ app.get('/home', async (req, res) => {
     const userId = req.session.userId;
 
     const user = await User.findOne({_id: userId});
-    console.log(user);
+    
+    if (!user) {
+        return res.redirect('/');
+    }
+
+    res.render('home', {user: user});
 })

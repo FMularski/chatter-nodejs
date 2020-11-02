@@ -2,35 +2,39 @@
 <html lang="en">
 <head>
     <%- include('partials/head.ejs') %>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" />
+    <title>Welcome to chatter!</title>
 </head>
 <body>
     <header>
         <%- include('partials/header.ejs') %>
     </header>
     <main>
-        <% if (error) { %>
-            <h1 class="error"><%= error %></h1>
-        <% } %>
+        <% const { success, error } = getMessages(); 
+           if (success) { %> <h1 class="flash success"><%= success %></h1> <% }
+           if (error) { %> <h1 class="flash error"><%= error %></h1> <% } %>
+
+        <img class="flying-msg msg-top" src="img/message.png" alt="">
+        <img class="flying-msg msg-mid" src="img/message.png" alt="">
+        <img class="flying-msg msg-bot" src="img/message.png" alt=""> 
         <div id="forms">
             <form id="sign-in-form" action="/login" method="POST">
                 <h1>Sign In</h1>
-                <label for="sign_in_login">Login</label>
+                <label for="sign_in_login">Login</label><br/>
                 <input type="text" name="sign_in_login" id="sign_in_login" required><br/>
-                <label for="sign_in_password">Password</label>
+                <label for="sign_in_password">Password</label><br/>
                 <input type="password" name="sign_in_password" id="sign_in_password" required><br/>
                 <button type="submit">Sign in</button>
             </form>
     
-            <form id="sign-up-form">
+            <form id="sign-up-form" action="/register" method="POST">
                 <h1>No account yet?<br/>Sign up now!</h1>
-                <label for="login">Login</label>
+                <label for="login">Login</label><br/>
                 <input type="text" name="login" id="login" required><br/>
-                <label for="email">Email</label>
+                <label for="email">Email</label><br/>
                 <input type="email" name="email" id="email" required><br/>
-                <label for="password">Password</label>
+                <label for="password">Password</label><br/>
                 <input type="password" name="password" id="password" required><br/>
-                <label for="confirm">Confirm password</label>
+                <label for="confirm">Confirm password</label><br/>
                 <input type="password" name="confirm" id="confirm" required><br/>
                 <button type="submit">Sign up</button>
             </form>
@@ -41,6 +45,6 @@
     </footer>
     
     <%- include('partials/scripts.ejs') %>
-    <script src="js/loginPageClient.js"></script>
+    <script src="js/flyingMsg.js"></script>
 </body>
 </html>
