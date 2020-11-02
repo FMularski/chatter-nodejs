@@ -78,6 +78,17 @@ header {
       transform: rotateY(180deg);
     }
   }
+
+  h2 {
+    flex-grow: 1;
+    text-align: right;
+    margin-right: 3rem;
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 3rem;
+  }
 }
 
 h1.flash {
@@ -111,6 +122,36 @@ h1.flash {
   }
 }
 
+nav {
+  font-size: 2.4rem;
+  ul {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+    li {
+      list-style: none;
+      padding: 2rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.2);
+        background: white;
+        border-radius: 25px;
+
+        a {
+          color: #e66465;
+        }
+      }
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+}
+
 main > #forms {
   min-height: 85vh;
   display: flex;
@@ -132,10 +173,12 @@ main > #forms {
       margin: 1rem 0rem;
       transition: all 0.3s ease;
       background-color: rgba(255, 255, 255, 0.5);
-      height: 2rem;
+      height: 3rem;
+      font-size: 2.8rem;
       text-align: center;
       outline: none;
       border: none;
+      font-family: "Montserrat", sans-serif;
 
       &:focus {
         outline: 4px solid #9198e5;

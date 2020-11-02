@@ -101,6 +101,19 @@ header img:hover {
           transform: rotateY(180deg);
 }
 
+header h2 {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  text-align: right;
+  margin-right: 3rem;
+  font-size: 2rem;
+}
+
+header h3 {
+  font-size: 3rem;
+}
+
 h1.flash {
   padding: 1rem;
   color: white;
@@ -150,6 +163,44 @@ h1.flash.success {
   }
 }
 
+nav {
+  font-size: 2.4rem;
+}
+
+nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+nav ul li {
+  list-style: none;
+  padding: 2rem;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+nav ul li:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  background: white;
+  border-radius: 25px;
+}
+
+nav ul li:hover a {
+  color: #e66465;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+
 main > #forms {
   min-height: 85vh;
   display: -webkit-box;
@@ -181,10 +232,12 @@ main > #forms form input {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   background-color: rgba(255, 255, 255, 0.5);
-  height: 2rem;
+  height: 3rem;
+  font-size: 2.8rem;
   text-align: center;
   outline: none;
   border: none;
+  font-family: "Montserrat", sans-serif;
 }
 
 main > #forms form input:focus {
@@ -240,5 +293,26 @@ footer {
   html {
     font-size: 42.5%;
   }
+}
+
+div#content-container {
+  width: 80%;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 3rem;
+  border-radius: 25px;
+}
+
+table {
+  font-size: 2.4rem;
+}
+
+table tr,
+table td {
+  color: white;
+}
+
+table tr {
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */

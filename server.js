@@ -107,3 +107,15 @@ app.get('/home', async (req, res) => {
 
     res.render('home', {user: user});
 })
+
+app.get('/create_chat', async (req, res) => {
+    const userId = req.session.userId;
+
+    const user = await User.findOne({_id: userId});
+    
+    if (!user) {
+        return res.redirect('/');
+    }
+
+    res.render('create_chat', {user: user});
+})
