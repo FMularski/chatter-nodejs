@@ -591,4 +591,144 @@ form#add-friend-form button:hover, form#add-friend-form button:focus {
   background-color: white;
   color: #9198e5;
 }
+
+div#chat-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+div#chat-header h1 {
+  color: white;
+  padding: 1.5rem 1rem;
+}
+
+div#chat-header a {
+  background: rgba(255, 59, 59, 0.678);
+  border-radius: 5px;
+  color: white;
+  padding: 1rem;
+  font-size: 1.4rem;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+div#chat-header a:hover {
+  text-decoration: none;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+div#chat {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 25px;
+  padding: 1rem;
+  overflow: auto;
+  min-height: 50vh;
+  max-height: 50vh;
+  overflow-x: hidden;
+  border: 1px solid white;
+}
+
+div.message {
+  font-size: 1.6rem;
+  padding: 2rem;
+  border-radius: 25px;
+  width: 50.1%;
+  margin-bottom: 2%;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  text-align: justify;
+}
+
+div.message:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+div.message span {
+  font-style: italic;
+}
+
+.message-user {
+  background-color: #9198e5;
+  float: right;
+}
+
+.message-friend {
+  background-color: #e66465;
+  float: left;
+}
+
+.message-system {
+  background-color: rgba(255, 255, 255, 0.5);
+  float: left;
+  width: 100% !important;
+  text-align: center !important;
+}
+
+form#message-form {
+  padding-top: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+form#message-form textarea {
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-size: 1.6rem;
+}
+
+form#message-form textarea:focus {
+  background: rgba(255, 255, 255, 0.8);
+  -webkit-transform: scale(1.01);
+          transform: scale(1.01);
+}
+
+form#message-form button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 15rem;
+          flex: 1 1 15rem;
+  background: none;
+  outline: none;
+  border: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+form#message-form button:hover {
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+}
+
+form#message-form button img {
+  width: 5rem;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 45%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  html {
+    font-size: 37.5%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  html {
+    font-size: 27.5%;
+  }
+}
 /*# sourceMappingURL=style.css.map */
