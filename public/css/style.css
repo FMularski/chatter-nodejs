@@ -329,6 +329,7 @@ form#create-chat-form {
 
 form#create-chat-form input {
   width: 60%;
+  text-align: center;
 }
 
 form#create-chat-form h3 {
@@ -361,7 +362,20 @@ form#create-chat-form ul li {
 }
 
 form#create-chat-form ul li input {
-  width: 4rem;
+  width: 20px;
+  height: 20px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+form#create-chat-form ul li input:hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
+form#create-chat-form ul li span {
+  padding: 2rem;
 }
 
 form#create-chat-form button {
@@ -403,6 +417,7 @@ form#find-chat-form {
 
 form#find-chat-form input {
   width: 40%;
+  text-align: center;
 }
 
 form#find-chat-form ul {
@@ -507,5 +522,73 @@ div#find-results ul li button:hover, div#find-results ul li button:focus {
 
 div#find-results ul li span {
   font-size: 1.6rem;
+}
+
+ul#friends-list {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  color: white;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-size: 2rem;
+}
+
+form#add-friend-form {
+  padding-top: 2rem;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 2.4rem;
+}
+
+form#add-friend-form h3 {
+  font-size: 2.4rem;
+}
+
+form#add-friend-form input {
+  width: 30%;
+  text-align: center;
+}
+
+form#add-friend-form button {
+  margin-top: 1rem;
+  width: 20%;
+  outline: none;
+  border: none;
+  padding: 0.5rem 2rem;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid white;
+  color: white;
+  border-radius: 1rem 0rem 1rem 0rem;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-size: 1.6rem;
+}
+
+form#add-friend-form button:hover, form#add-friend-form button:focus {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  background-color: white;
+  color: #9198e5;
 }
 /*# sourceMappingURL=style.css.map */

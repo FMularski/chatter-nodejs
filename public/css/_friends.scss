@@ -1,0 +1,50 @@
+ul#friends-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: white;
+  flex-wrap: wrap;
+  font-size: 2rem;
+}
+
+form#add-friend-form {
+  padding-top: 2rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 2.4rem;
+
+  h3 {
+    font-size: 2.4rem;
+  }
+
+  input {
+    width: 30%;
+    text-align: center;
+  }
+
+  button {
+    margin-top: 1rem;
+    width: 20%;
+    outline: none;
+    border: none;
+    padding: 0.5rem 2rem;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid white;
+    color: white;
+    border-radius: 1rem 0rem 1rem 0rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.6rem;
+
+    &:hover,
+    &:focus {
+      transform: scale(1.2);
+      background-color: white;
+      color: #9198e5;
+    }
+  }
+}

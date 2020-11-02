@@ -141,6 +141,17 @@ app.get('/friends', async (req, res) => {
     res.render('friends', {user: user});
 })
 
+app.get('/chat/:id', async (req, res) => {
+    const userId = req.session.userId;
+    const user = await User.findOne({_id: userId});
+
+    if (!user) { 
+        return res.redirect('/');
+    }
+
+    res.render('chat', {user: user, chatName: 'test'});
+})
+
 app.get('/sign_out', (req, res) => {
     req.session.userId = undefined;
     req.flash('success', 'Signed out successfully.');

@@ -28,6 +28,7 @@ form#create-chat-form {
 
   input {
     width: 60%;
+    text-align: center;
   }
 
   h3 {
@@ -47,7 +48,17 @@ form#create-chat-form {
       padding: 1rem;
 
       input {
-        width: 4rem;
+        width: 20px;
+        height: 20px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        &:hover {
+          transform: scale(1.5);
+        }
+      }
+
+      span {
+        padding: 2rem;
       }
     }
   }
