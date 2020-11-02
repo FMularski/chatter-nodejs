@@ -18,3 +18,58 @@ table {
     text-align: center;
   }
 }
+
+form#create-chat-form {
+  color: white;
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  font-size: 2.4rem;
+
+  input {
+    width: 60%;
+  }
+
+  h3 {
+    padding-top: 2rem;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    list-style: none;
+
+    li {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+
+      input {
+        width: 4rem;
+      }
+    }
+  }
+
+  button {
+    width: 30%;
+    outline: none;
+    border: none;
+    padding: 0.5rem 2rem;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid white;
+    color: white;
+    border-radius: 1rem 0rem 1rem 0rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.6rem;
+
+    &:hover,
+    &:focus {
+      transform: scale(1.2);
+      background-color: white;
+      color: #9198e5;
+    }
+  }
+}

@@ -25,6 +25,7 @@ body {
   pointer-events: all;
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
+  z-index: -1;
 }
 
 .flying-msg.msg-top {
@@ -190,10 +191,12 @@ nav ul li:hover {
           transform: scale(1.2);
   background: white;
   border-radius: 25px;
+  text-decoration: none;
 }
 
 nav ul li:hover a {
   color: #e66465;
+  text-decoration: none;
 }
 
 nav ul li a {
@@ -314,5 +317,72 @@ table td {
 
 table tr {
   text-align: center;
+}
+
+form#create-chat-form {
+  color: white;
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  font-size: 2.4rem;
+}
+
+form#create-chat-form input {
+  width: 60%;
+}
+
+form#create-chat-form h3 {
+  padding-top: 2rem;
+}
+
+form#create-chat-form ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  list-style: none;
+}
+
+form#create-chat-form ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem;
+}
+
+form#create-chat-form ul li input {
+  width: 4rem;
+}
+
+form#create-chat-form button {
+  width: 30%;
+  outline: none;
+  border: none;
+  padding: 0.5rem 2rem;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid white;
+  color: white;
+  border-radius: 1rem 0rem 1rem 0rem;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-size: 1.6rem;
+}
+
+form#create-chat-form button:hover, form#create-chat-form button:focus {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  background-color: white;
+  color: #9198e5;
 }
 /*# sourceMappingURL=style.css.map */

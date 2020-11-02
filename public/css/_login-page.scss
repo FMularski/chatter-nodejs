@@ -28,6 +28,7 @@ $success-color2: rgba(5, 184, 5, 0.8);
   cursor: pointer;
   pointer-events: all;
   transition: all 1s ease;
+  z-index: -1;
 
   &.msg-top {
     top: 20vh;
@@ -138,9 +139,11 @@ nav {
         transform: scale(1.2);
         background: white;
         border-radius: 25px;
+        text-decoration: none;
 
         a {
           color: #e66465;
+          text-decoration: none;
         }
       }
 
