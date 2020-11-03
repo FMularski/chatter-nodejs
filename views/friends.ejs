@@ -22,10 +22,10 @@
                 <li>user4</li>
             </ul>
 
-            <form id="add-friend-form" action="/add_friend", method="POST">
-                <h3>Add friend</h3>
-                <input type="text" name="friend_login">
-                <button>Add</button>
+            <form id="invite-friend-form">
+                <h3>user login</h3>
+                <input type="text" id="user-login">
+                <button id="invite-btn">invite</button>
             </form>
             <hr>
             <div id="invitations">
@@ -62,5 +62,6 @@
     </footer>
     
     <%- include('partials/scripts.ejs') %>
+    <script src="/js/friendsClient.js"></script>
 </body>
 </html>

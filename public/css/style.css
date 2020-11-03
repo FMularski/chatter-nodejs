@@ -541,7 +541,7 @@ ul#friends-list {
   font-size: 2rem;
 }
 
-form#add-friend-form {
+form#invite-friend-form {
   padding-top: 2rem;
   color: white;
   display: -webkit-box;
@@ -560,16 +560,16 @@ form#add-friend-form {
   font-size: 2.4rem;
 }
 
-form#add-friend-form h3 {
+form#invite-friend-form h3 {
   font-size: 2.4rem;
 }
 
-form#add-friend-form input {
+form#invite-friend-form input {
   width: 30%;
   text-align: center;
 }
 
-form#add-friend-form button {
+form#invite-friend-form button {
   margin-top: 1rem;
   width: 20%;
   outline: none;
@@ -585,7 +585,7 @@ form#add-friend-form button {
   font-size: 1.6rem;
 }
 
-form#add-friend-form button:hover, form#add-friend-form button:focus {
+form#invite-friend-form button:hover, form#invite-friend-form button:focus {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
   background-color: white;
@@ -778,5 +778,17 @@ form#message-form button img {
   html {
     font-size: 27.5%;
   }
+}
+
+.toast {
+  font-size: 1.6rem;
+}
+
+.toast-success {
+  background: #11ca11;
+}
+
+.toast-error {
+  background: #ff3a3a;
 }
 /*# sourceMappingURL=style.css.map */

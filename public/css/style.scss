@@ -3,3 +3,14 @@
 @import "find-chat";
 @import "friends";
 @import "chat";
+
+.toast {
+  font-size: 1.6rem;
+}
+.toast-success {
+  background: rgb(17, 202, 17);
+}
+
+.toast-error {
+  background: rgb(255, 58, 58);
+}

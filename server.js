@@ -9,6 +9,7 @@ const databaseManager = require('./models/databaseManager');
 const { User, validateUser } = require('./models/user');
 const session = require('express-session');
 const flash = require('express-flash-messages');
+const apiInvitation = require('./routers/apiInvitation');
 
 const apiUser = require('./routers/apiUser');
 
@@ -34,13 +35,14 @@ app.use(session({
 app.use(flash());
 
 app.use('/api/users', apiUser);
+app.use('/api/invitations', apiInvitation);
 
 app.listen(port, () => {
     console.log(`listening on port ${port}...`);
 })
 
 app.get('/', (req, res) => {
-    req.session.userId = undefined;
+    delete req.session.userId;
     res.render('login_page');
 })
 
@@ -150,33 +152,6 @@ app.get('/chat/:id', async (req, res) => {
     }
 
     res.render('chat', {user: user, chatName: 'test'});
-})
-
-app.post('/invite', async (req, res) => {
-    const userId = req.session.userId;
-    const user = await User.findOne({_id: userId});
-
-    const invited = await User.findOne({login: req.body.friend_login});
-    
-
-    /* todo
-    invitations system -> 2 kinds: friends inv, chat invites
-
-    new 2 models (only one is enough? field: description/type ): friend invite & chat invite 
-    fields: sender id, receiver id, (chat id), message(description)
-
-    can be done with POST /api/invites/ ? 
-
-
-    before sending an invite check: 
-    + if receiver exists
-    + if receiver is not sender
-    + invite already sent to particular receiver
-
-    bonus: block list (in friends or invites view)?
-    */
-
-    res.redirect('/friends');
 })
 
 app.get('/sign_out', (req, res) => {
