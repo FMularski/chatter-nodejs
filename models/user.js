@@ -4,7 +4,8 @@ const Joi = require('joi');
 const userSchema = new mongoose.Schema({
     login: {type: String, required: true, unique: true, dropDups: true, minlength: 6},
     email: {type: String, required: true, unique: true, dropDups: true},
-    password: {type: String, required: true, minlength: 6}
+    password: {type: String, required: true, minlength: 6},
+    friends: [String]
 });
 
 function validateUser(user){
