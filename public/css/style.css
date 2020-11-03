@@ -791,4 +791,8 @@ form#message-form button img {
 .toast-error {
   background: #ff3a3a;
 }
+
+.toast-info {
+  background: #5b86fd;
+}
 /*# sourceMappingURL=style.css.map */

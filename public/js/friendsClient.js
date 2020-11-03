@@ -43,6 +43,28 @@ $(document).ready(function(){
         });
     }
 
+    function refreshFriendsList() {
+        const friendsList = $('#friends-list');
+        friendsList.html('');
+
+        $.ajax({
+            url: '/get_friends',
+            method: 'GET',
+            contentType: "application/json",
+            success: response => {
+
+                if (response.friends.length == 0) {
+                    friendsList.append('<li>No friends yet.</li>');
+                }
+
+                response.friends.forEach( function (friend) {
+                    friendsList.append('<li>' + friend.login + '</li>');
+                })
+            }
+        })
+    }
+
+    refreshFriendsList();
     refreshInvitationsList();
     
 
@@ -55,14 +77,36 @@ $(document).ready(function(){
             contentType: "application/json",
             data: JSON.stringify({senderLogin: senderLogin}),
             success: response => {
-                toastr.success(`You and ${senderLogin} are now friends.`)
+                toastr.success(`You and ${senderLogin} are now friends.`);
+                refreshFriendsList();
                 refreshInvitationsList();
             },
             error: jqXHR => {
                 toastr.error(jqXHR.responseJSON.error);
             }
         })
-    })
+    });
+
+    $('#friends-invitations').on('click', '.decline-friend-btn', function(){
+        const senderLogin = $(this).parent().children()[2].innerHTML;
+        
+        $.ajax({
+            url: '/decline_friend',
+            method: 'POST',
+            contentType: "application/json",
+            data: JSON.stringify({senderLogin: senderLogin}),
+            success: response => {
+                toastr.info(`You declined ${senderLogin}\'s invitation.`);
+                refreshFriendsList();
+                refreshInvitationsList();
+            },
+            error: jqXHR => {
+                toastr.error(jqXHR.responseJSON.error);
+            }
+        })
+    });
+
+
     
     $('#invite-friend-form').on('submit', function(event) {
         event.preventDefault();

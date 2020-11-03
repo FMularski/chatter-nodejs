@@ -163,6 +163,13 @@ app.get('/sign_out', (req, res) => {
     res.redirect('/');
 })
 
+app.get('/get_friends', async (req, res) => {
+    const user = await User.findOne({_id: req.session.userId});
+    const friends = await User.find({friends: user._id}).select({login: 1});
+
+    res.send({friends: friends});
+})
+
 app.post('/add_friend', async (req, res) => {
     const user = await User.findOne({_id: req.session.userId});
     const sender = await User.findOne({login: req.body.senderLogin});
@@ -179,4 +186,15 @@ app.post('/add_friend', async (req, res) => {
     sender.save();
 
     res.status(200).redirect('/friends');
+});
+
+app.post('/decline_friend', async (req, res) => {
+    const user = await User.findOne({_id: req.session.userId});
+    const sender = await User.findOne({login: req.body.senderLogin});
+
+    await Invitation.deleteOne({senderId: sender._id, receiverId: user._id});
+    await Invitation.deleteOne({senderId: user._id, receiverId: sender._id});
+
+    res.status(200).redirect('/friends');
+
 })
