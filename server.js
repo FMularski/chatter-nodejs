@@ -7,6 +7,7 @@ const path = require('path');
 const morgan = require('morgan');
 const databaseManager = require('./models/databaseManager');
 const { User, validateUser } = require('./models/user');
+const { Invitation }  = require('./models/invitation');
 const session = require('express-session');
 const flash = require('express-flash-messages');
 const apiInvitation = require('./routers/apiInvitation');
@@ -160,4 +161,22 @@ app.get('/sign_out', (req, res) => {
     req.session.userId = undefined;
     req.flash('success', 'Signed out successfully.');
     res.redirect('/');
+})
+
+app.post('/add_friend', async (req, res) => {
+    const user = await User.findOne({_id: req.session.userId});
+    const sender = await User.findOne({login: req.body.senderLogin});
+
+    // add each other
+    user.friends.push(sender._id);
+    sender.friends.push(user._id);
+
+    // remove pending invites
+    await Invitation.deleteOne({senderId: sender._id, receiverId: user._id});
+    await Invitation.deleteOne({senderId: user._id, receiverId: sender._id});
+
+    user.save();
+    sender.save();
+
+    res.status(200).redirect('/friends');
 })
