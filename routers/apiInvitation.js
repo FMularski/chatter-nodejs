@@ -3,8 +3,18 @@ const router = express.Router();
 const { Invitation } = require('../models/invitation');
 const { User } = require('../models/user');
 
+router.get('/', async (req, res) => {
+    const userId = req.session.userId;
+
+    const friendsInvitations = await Invitation.find({receiverId: userId, chatId: {$eq: 0}});
+    const chatsInvitations = await Invitation.find({receiverId: userId, chatId: {$ne: 0}});
+
+    res.send({friendsInvitations: friendsInvitations, chatsInvitations: chatsInvitations});
+})
+
 router.post('/', async (req, res) => {
     const userId = req.session.userId;
+    const user = await User.findOne({_id: userId});
 
     const invited = await User.findOne({ login: req.body.userLogin});
     if(!invited) {
@@ -22,7 +32,9 @@ router.post('/', async (req, res) => {
 
     const invitation = new Invitation({
         senderId: userId,
-        receiverId: invited._id
+        senderLogin: user.login,
+        receiverId: invited._id,
+        chatId: 0
     });
 
     invitation.save();

@@ -154,6 +154,8 @@ app.get('/chat/:id', async (req, res) => {
     res.render('chat', {user: user, chatName: 'test'});
 })
 
+// todo: 2 users invite each other, the first one accepts causes deletion of both invitation  
+
 app.get('/sign_out', (req, res) => {
     req.session.userId = undefined;
     req.flash('success', 'Signed out successfully.');
