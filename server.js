@@ -103,56 +103,61 @@ app.get('/home', async (req, res) => {
     const userId = req.session.userId;
 
     const user = await User.findOne({_id: userId});
+    const notificationCount = await getNotificationCount(userId);
     
     if (!user) {
         return res.redirect('/');
     }
 
-    res.render('home', {user: user});
+    res.render('home', {user: user, notificationCount: notificationCount});
 })
 
 app.get('/create_chat', async (req, res) => {
     const userId = req.session.userId;
     const user = await User.findOne({_id: userId});
+    const notificationCount = await getNotificationCount(userId);
     
     if (!user) {
         return res.redirect('/');
     }
 
-    res.render('create_chat', {user: user});
+    res.render('create_chat', {user: user, notificationCount: notificationCount});
 })
 
 app.get('/find_chat', async (req, res) => {
     const userId = req.session.userId;
     const user = await User.findOne({_id: userId});
+    const notificationCount = await getNotificationCount(userId);
     
     if (!user) {
         return res.redirect('/');
     }
 
-    res.render('find_chat', {user: user});
+    res.render('find_chat', {user: user, notificationCount: notificationCount});
 })
 
 app.get('/friends', async (req, res) => {
     const userId = req.session.userId;
     const user = await User.findOne({_id: userId});
+    const notificationCount = await getNotificationCount(userId);
     
     if (!user) {
         return res.redirect('/');
     }
 
-    res.render('friends', {user: user});
+    res.render('friends', {user: user, notificationCount: notificationCount});
 })
 
 app.get('/chat/:id', async (req, res) => {
     const userId = req.session.userId;
     const user = await User.findOne({_id: userId});
+    const notificationCount = await getNotificationCount(userId);
 
     if (!user) { 
         return res.redirect('/');
     }
 
-    res.render('chat', {user: user, chatName: 'test'});
+    res.render('chat', {user: user, notificationCount: notificationCount, chatName: 'test'});
 })
 
 // todo: 2 users invite each other, the first one accepts causes deletion of both invitation  
@@ -196,5 +201,8 @@ app.post('/decline_friend', async (req, res) => {
     await Invitation.deleteOne({senderId: user._id, receiverId: sender._id});
 
     res.status(200).redirect('/friends');
-
 })
+
+async function getNotificationCount(userId){ 
+    return await Invitation.countDocuments({receiverId: userId});
+}

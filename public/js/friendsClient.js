@@ -64,6 +64,19 @@ $(document).ready(function(){
         })
     }
 
+    function updateFriendsNotification(){
+        const friendsNotification = $('#friends-notification');
+        let parsed = parseInt(friendsNotification.html(), 10);
+        parsed--;
+
+        if (parsed) {
+            friendsNotification.html(parsed);
+        } else {
+            friendsNotification.html('');
+            friendsNotification.removeClass('friends-notification-active');
+        }
+    }
+
     refreshFriendsList();
     refreshInvitationsList();
     
@@ -80,6 +93,7 @@ $(document).ready(function(){
                 toastr.success(`You and ${senderLogin} are now friends.`);
                 refreshFriendsList();
                 refreshInvitationsList();
+                updateFriendsNotification();
             },
             error: jqXHR => {
                 toastr.error(jqXHR.responseJSON.error);
@@ -99,6 +113,7 @@ $(document).ready(function(){
                 toastr.info(`You declined ${senderLogin}\'s invitation.`);
                 refreshFriendsList();
                 refreshInvitationsList();
+                updateFriendsNotification();
             },
             error: jqXHR => {
                 toastr.error(jqXHR.responseJSON.error);

@@ -199,6 +199,10 @@ nav ul li:hover a {
   text-decoration: none;
 }
 
+nav ul li:hover a .friends-notification-active {
+  border: 2px solid #e66465;
+}
+
 nav ul li a {
   text-decoration: none;
   color: white;
@@ -794,5 +798,14 @@ form#message-form button img {
 
 .toast-info {
   background: #5b86fd;
+}
+
+.friends-notification-active {
+  border-radius: 25px;
+  width: 1rem;
+  text-align: center;
+  border: 2px solid white;
+  padding: 0rem 1rem;
+  margin-left: 0.75rem;
 }
 /*# sourceMappingURL=style.css.map */

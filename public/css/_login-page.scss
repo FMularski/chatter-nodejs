@@ -144,6 +144,10 @@ nav {
         a {
           color: #e66465;
           text-decoration: none;
+
+          .friends-notification-active {
+            border: 2px solid #e66465;
+          }
         }
       }
 
