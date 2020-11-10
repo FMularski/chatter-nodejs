@@ -13,6 +13,7 @@ const flash = require('express-flash-messages');
 const apiInvitation = require('./routers/apiInvitation');
 
 const apiUser = require('./routers/apiUser');
+const apiChat = require('./routers/apiChat');
 
 /* app */
 const app = express();
@@ -37,6 +38,7 @@ app.use(flash());
 
 app.use('/api/users', apiUser);
 app.use('/api/invitations', apiInvitation);
+app.use('/api/chats', apiChat);
 
 app.listen(port, () => {
     console.log(`listening on port ${port}...`);

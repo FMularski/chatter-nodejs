@@ -15,17 +15,12 @@
     </nav>
     <main>
         <div id="content-container">
-            <form id="create-chat-form" action="">
+            <form id="create-chat-form">
                 <label for="chat_name">new chat name</label><br/>
                 <input type="text" id="chat_name" />
                 <h3 id="select-friends">Select friends</h3>
-                <ul>
-                    <li><input type="checkbox" name="" id="" value="user1.id"> <span>user1</span> </li>
-                    <li><input type="checkbox" name="" id="" value="user2.id"> <span>user1</span> </li>
-                    <li><input type="checkbox" name="" id="" value="user3.id"> <span>user1</span> </li>
-                    <li><input type="checkbox" name="" id="" value="user4.id"> <span>user1</span> </li>
-                </ul>
-                <button type="submit">create</button>
+                <ul id="friends-to-invite"></ul>
+                <button id="create-chat-btn" type="submit">create</button>
             </form>
         </div>
         
@@ -35,5 +30,6 @@
     </footer>
     
     <%- include('partials/scripts.ejs') %>
+    <script src="/js/createChatClient.js"></script>
 </body>
 </html>

@@ -808,4 +808,9 @@ form#message-form button img {
   padding: 0rem 1rem;
   margin-left: 0.75rem;
 }
+
+.inactive {
+  opacity: 0.5;
+  pointer-events: none;
+}
 /*# sourceMappingURL=style.css.map */
