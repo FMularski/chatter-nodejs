@@ -17,11 +17,20 @@
         <div id="content-container">
             <table class="table table-hover">
                 <tbody>
-                  <tr>
-                    <td><a href="">chat name</a></td>
-                    <td>chat members</td>
-                    <td>msg icon</td>
-                  </tr>
+                    <% chats.forEach( function(chat) { %>
+                    <tr>
+                        <td><a href="/chat/<%= chat._id %>"><%= chat.chatName %></a></td>
+                        <td>
+                            <% chat.members.forEach( function(member) { %>
+                                <% if( member.owner) { %>
+                                    <i class="fas fa-crown"></i>
+                                <% } %>
+                                <%= member.login %> &nbsp;&nbsp;&nbsp;
+                            <% }) %>
+                        </td>
+                        <td>msg icon</td>
+                    </tr>
+                    <% }) %>
                 </tbody>
               </table>
         </div>

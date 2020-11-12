@@ -8,6 +8,7 @@ const morgan = require('morgan');
 const databaseManager = require('./models/databaseManager');
 const { User, validateUser } = require('./models/user');
 const { Invitation }  = require('./models/invitation');
+const { Chat } = require('./models/chat');
 const session = require('express-session');
 const flash = require('express-flash-messages');
 const apiInvitation = require('./routers/apiInvitation');
@@ -103,15 +104,16 @@ app.post('/login', async (req, res) => {
 
 app.get('/home', async (req, res) => {
     const userId = req.session.userId;
-
     const user = await User.findOne({_id: userId});
-    const notificationCount = await getNotificationCount(userId);
     
     if (!user) {
         return res.redirect('/');
     }
 
-    res.render('home', {user: user, notificationCount: notificationCount});
+    const notificationCount = await getNotificationCount(userId);
+    const chats = await Chat.find({'members.userId': {$in: userId}});
+    
+    res.render('home', {user: user, chats: chats, notificationCount: notificationCount});
 })
 
 app.get('/create_chat', async (req, res) => {
