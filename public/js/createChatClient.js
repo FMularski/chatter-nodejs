@@ -38,9 +38,18 @@ $(document).ready( function() {
             contentType: 'application/json',
             data: JSON.stringify({chatName: chatName, friendsIds: ids}),
             success: response => {
-
+                toastr.success('You have successfully created chat ' + chatName + '.', 'Success');
+                for ( let i = 0; i < checkedFriends.length; i++) {
+                    checkedFriends[i].checked = false;
+                }
+            },
+            error: jqXHR => {
+                toastr.error(jqXHR.responseJSON.error);
             }
         });
+
+        $('#chat_name').val('');
+        $('#create-chat-btn').blur();
     });
 
 });
