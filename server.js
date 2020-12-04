@@ -155,13 +155,16 @@ app.get('/friends', async (req, res) => {
 app.get('/chat/:id', async (req, res) => {
     const userId = req.session.userId;
     const user = await User.findOne({_id: userId});
-    const notificationCount = await getNotificationCount(userId);
-
+    
     if (!user) { 
         return res.redirect('/');
     }
 
-    res.render('chat', {user: user, notificationCount: notificationCount, chatName: 'test'});
+    const notificationCount = await getNotificationCount(userId);
+    const chat = await Chat.findOne({_id: req.params.id});
+
+
+    res.render('chat', {user: user, notificationCount: notificationCount, chat: chat });
 })
 
 app.get('/sign_out', (req, res) => {

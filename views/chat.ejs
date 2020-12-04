@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <%- include('partials/head.ejs') %>
-    <title>chatter | <%= chatName %></title>
+    <title>chatter | <%= chat.chatName %></title>
 </head>
 <body>
     <header>
         <%- include('partials/header.ejs') %>
-        <h3> | <%= chatName %></h3>
+        <h3> | <%= chat.chatName %></h3>
         <h2>Logged in as <b><%= user.login %></b></h2>
     </header>
     <nav>
@@ -16,23 +16,37 @@
     <main>
         <div id="content-container">
             <div id="chat-header">
-                <h1 id="chat-title"><%= chatName %> (user1, user2, user3)</h1>
+                <h1 id="chat-title">
+                    <b><%= chat.chatName %></b> &nbsp;
+                    <% chat.members.forEach( function(member) { %>
+                        <% if( member.owner) { %>
+                            <i class="fas fa-crown"></i>
+                        <% } %>  
+                        <%= member.login %>
+                    <% }) %>
+                </h1>
                 <a href="">leave chat</a>
             </div>
             <div id="chat">
-                <div class="message message-user">
-                    <span><b>autor - user</b> data </span>
-                    <hr/>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam amet hic ab modi dolore error?
-                </div>
-                <div class="message message-system">
-                    <span>Lorem ipsum dolor sit.</span>
-                </div>
-                <div class="message message-friend">
-                    <span><b>autor - friend</b> data </span>
-                    <hr/>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi, dolorem.
-                </div>
+                 <% chat.messages.forEach( msg => { %>
+                    <% if (msg.authorId == user._id) { %>
+                        <div class="message message-user">
+                            <span><b><%= user.login %></b> <%= msg.date %> </span>
+                            <hr/>
+                            <%= msg.text %>
+                        </div>
+                    <% } else if (msg.authorId == "0") { %>
+                        <div class="message message-system">
+                            <span><%= msg.text %></span>
+                        </div>
+                    <% } else { %>
+                        <div class="message message-friend">
+                            <span><b><%= msg.authorLogin %></b> <%= msg.date %> </span>
+                            <hr/>
+                            <%= msg.text %>
+                        </div>
+                    <% } %>
+                <% }) %>
             </div>
 
             <form id="message-form" >

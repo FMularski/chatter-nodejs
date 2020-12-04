@@ -5,7 +5,14 @@ const chatSchema = mongoose.Schema({
     members: [{
         userId: String, 
         login: String, 
-        owner: Boolean}]
+        owner: Boolean}],
+    messages: [{
+        messageId: String,
+        authorId: String,
+        authorLogin: String,
+        date: String,
+        text: String,
+    }]
 })
 
 const Chat = mongoose.model('Chat', chatSchema);
