@@ -27,7 +27,28 @@ router.post('/', async (req, res) => {
     const newChat = new Chat({
         chatName: req.body.chatName,
         members: members
-    })
+    });
+
+    newChat.messages.push({
+        authorId: "0",
+        authorLogin: "sys",
+        date: new Date().now,
+        text: `${userInDb.login} created chat '${req.body.chatName}'`,
+    });
+
+    // add msgs about added users ( exclude the owner)
+    members.forEach(member => {
+
+        if (member.userId != userInDb._id){
+            newChat.messages.push({
+                authorId: "0",
+                authorLogin: "sys",
+                date: new Date().now,
+                text: `${userInDb.login} added ${member.login} to the chat`
+            });
+        }
+
+    });
 
     newChat.save();
     return res.status(200).redirect('/create_chat');

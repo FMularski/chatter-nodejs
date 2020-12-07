@@ -7,7 +7,6 @@ const chatSchema = mongoose.Schema({
         login: String, 
         owner: Boolean}],
     messages: [{
-        messageId: String,
         authorId: String,
         authorLogin: String,
         date: String,

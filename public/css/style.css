@@ -323,6 +323,11 @@ table tr {
   text-align: center;
 }
 
+h1 {
+  color: white;
+  text-align: center;
+}
+
 form#create-chat-form {
   color: white;
   width: 80%;

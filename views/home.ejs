@@ -17,6 +17,10 @@
         <div id="content-container">
             <table class="table table-hover">
                 <tbody>
+                    <% if (!chats.length) { %> 
+                        <h1>You have not joined any chat yet. </h1>
+                    <% } %>
+
                     <% chats.forEach( function(chat) { %>
                     <tr>
                         <td><a href="/chat/<%= chat._id %>"><%= chat.chatName %></a></td>
