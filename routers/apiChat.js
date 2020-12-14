@@ -3,6 +3,17 @@ const router = express.Router();
 const { Chat }  = require('../models/chat');
 const { User } = require('../models/user');
 
+router.get('/:id', async (req, res) => {
+
+    const chatInDb = await Chat.findOne({_id: req.params.id});
+
+    if (!chatInDb) {
+        return res.status(404).send({error: 'Chat not found.'});
+    }
+
+    return res.send(chatInDb);
+})
+
 router.post('/', async (req, res) => {
 
     if (!req.body.chatName) {
